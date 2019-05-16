@@ -1,9 +1,8 @@
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
+--       Licensed under: AGPLv3        --
+--  GNU AFFERO GENERAL PUBLIC LICENSE  --
+--     Version 3, 19 November 2007     --
 
-_VERSION = '6.1.0'
+_VERSION = '6.2.1'
 _FirstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
 
