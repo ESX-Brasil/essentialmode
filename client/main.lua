@@ -1,7 +1,6 @@
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
--- NO TOUCHY, IF SOMETHING IS WRONG CONTACT KANERSPS! --
+--       Licensed under: AGPLv3        --
+--  GNU AFFERO GENERAL PUBLIC LICENSE  --
+--     Version 3, 19 November 2007     --
 
 Citizen.CreateThread(function()
 	while true do
@@ -27,21 +26,6 @@ Citizen.CreateThread(function()
 		if(oldPos ~= pos)then
 			TriggerServerEvent('es:updatePositions', pos.x, pos.y, pos.z)
 			oldPos = pos
-		end
-	end
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(0)
-		
-		if pvpEnabled then
-			for i = 0,32 do
-				if NetworkIsPlayerActive(i) then
-					SetCanAttackFriendly(GetPlayerPed(i), true, true)
-					NetworkSetFriendlyFireOption(true)
-				end
-			end
 		end
 	end
 end)
