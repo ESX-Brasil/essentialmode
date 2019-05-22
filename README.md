@@ -1,20 +1,21 @@
 # EssentialMode
 
-## Description
-EssentialMode is a FiveM resource which is used to bring a central management interface for other resources. It handles player data saving like their money, groups and roles and makes these easily usable by other resources.
+## Descrição
+O EssentialMode é um recurso do FiveM que é usado para trazer uma interface de gerenciamento central para outros recursos.
+Ele lida com os dados do jogador salvando como seu dinheiro, grupos e funções e os torna facilmente utilizáveis por outros recursos.
 
-## Features
-- Advanced permission system
-- Easily create new commands which can interface with EssentialMode
-- Logging for every action if enabled
-- Clean readable code
-- Attempt at OOP for easy usage
+## Características
+- sistema de permissão avançada
+- Crie facilmente novos comandos que podem interagir com o EssentialMode
+- Registrando todas as ações se ativado
+- código legível limpo
+- Tentativa de OOP para uso fácil
 
-## Installation
-Please follow this guide: https://docs.essentialmode.com/#installation
+## Instalação
+Por favor, siga este guia: https://docs.essentialmode.com/#installation
 
-## Documentation
-Documentation for EssentialMode can be found at: https://docs.essentialmode.com/
+## Documentação
+A documentação do EssentialMode pode ser encontrada em: https://docs.essentialmode.com/
 
-# Rent a server with EssentialMode pre-installed!
+# Alugue um servidor com o EssentialMode pré-instalado!
 Go to https://zap-hosting.com/EssentialMode and use code `kanersps-a-2529` for 10% off on all products for life! They will even install EssentialMode for you!
