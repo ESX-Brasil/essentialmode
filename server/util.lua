@@ -7,7 +7,6 @@ Users = {}
 commands = {}
 settings = {}
 settings.defaultSettings = {
-	['pvpEnabled'] = true, --Ativa o pvp true ou false para desativa o pvp!
 	['permissionDenied'] = GetConvar('es_permissionDenied', 'false'),
   ['startingCash'] = GetConvar('es_startingCash', '0'), -- defini o dinheiro do player quando entra primeira vez no server
 	['startingBank'] = GetConvar('es_startingBank', '0'), -- defini o dinheiro do banco do player quando entra primeira vez no server
