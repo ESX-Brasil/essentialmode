@@ -55,5 +55,5 @@ end)
 
 RegisterNetEvent("es:enablePvp")
 AddEventHandler("es:enablePvp", function()
-	pvpEnabled = true --True ativo False inativo
+	pvpEnabled = true
 end)

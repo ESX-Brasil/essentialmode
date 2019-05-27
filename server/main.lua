@@ -2,7 +2,7 @@
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
 --     Version 3, 19 November 2007     --
 
-_VERSION = '6.2.1'
+_VERSION = '6.2.2'
 _FirstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
 
@@ -13,12 +13,17 @@ local VersionAPIRequest = "https://api.kanersps.pw/em/version?version=" .. _VERS
 
 function performVersionCheck()
 	print("Performing version check against: " .. VersionAPIRequest .. "\n")
-	PerformHttpRequest(VersionAPIRequest, function(err, rText, headers)		local decoded = json.decode(rText)
+	PerformHttpRequest(VersionAPIRequest, function(err, rText, headers)
+		local decoded = json.decode(rText)
 
 		if err == 200 then
 			if(not _FirstCheckPerformed)then
 				print("\n[EssentialMode] Current version: " .. _VERSION)
 				print("[EssentialMode] Updater version: " .. decoded.newVersion .. "\n")
+
+				if(decoded.startupmessage)then
+					print(decoded.startupmessage)
+				end
 			end
 			
 			if(decoded.uuid)then
@@ -63,7 +68,7 @@ end
 Citizen.CreateThread(function()
 	while true do
 		performVersionCheck()
-		Citizen.Wait(1200000)
+		Citizen.Wait(3600000)
 	end
 end)
 
