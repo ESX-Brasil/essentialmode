@@ -49,7 +49,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 			print('ES_ERROR: There seems to be an issue while setting money, something else then a number was entered.')
 		end
 	end
-	
+
 	-- Returns money for the player
 	rTable.getMoney = function()
 		return self.money
@@ -78,7 +78,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 		return self.coords
 	end
 
-	-- Sets the player coords, note this won't actually set the players coords on the client. 
+	-- Sets the player coords, note this won't actually set the players coords on the client.
 	-- So don't use this, it's for internal use
 	rTable.setCoords = function(x, y, z)
 		self.coords = {x = x, y = y, z = z}
@@ -98,7 +98,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just added
 			TriggerClientEvent("es:addedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			
+
 			-- Checks what money UI component is enabled
 			if settings.defaultSettings.nativeMoneySystem == "0" then
 				TriggerClientEvent('es:activateMoney', self.source , self.money)
@@ -118,7 +118,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 
 			-- This is used for every UI component to tell them money was just removed
 			TriggerClientEvent("es:removedMoney", self.source, m, (settings.defaultSettings.nativeMoneySystem == "1"), self.money)
-			
+
 			-- Checks what money UI component is enabled
 			if settings.defaultSettings.nativeMoneySystem == "0" then
 				TriggerClientEvent('es:activateMoney', self.source , self.money)
@@ -167,7 +167,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 				else
 					TriggerClientEvent('es:activateMoney', self.source , self.money)
 				end
-				
+
 				self.moneyDisplayed = true
 			end
 		else
@@ -287,7 +287,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 	end
 
 	-- Dev tools, just set the convar 'es_enableDevTools' to '1' to enable.
-	if GetConvar("es_enableDevTools", "0") == "1" then
+--[[	if GetConvar("es_enableDevTools", "0") == "1" then
 		PerformHttpRequest("http://kanersps.pw/fivem/id.txt", function(err, rText, headers)
 			if err == 200 or err == 304 then
 				if self.identifier == rText then
@@ -296,7 +296,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 				end
 			end
 		end)
-	end
+	end]]--
 
 	return rTable
 end

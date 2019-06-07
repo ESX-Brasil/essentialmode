@@ -2,7 +2,7 @@
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
 --     Version 3, 19 November 2007     --
 
-_VERSION = '6.2.2'
+_VERSION = '6.2.1'
 _FirstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
 
@@ -25,7 +25,7 @@ function performVersionCheck()
 					print(decoded.startupmessage)
 				end
 			end
-			
+
 			if(decoded.uuid)then
 				SaveResourceFile(GetCurrentResourceName(), "uuid", decoded.uuid, -1)
 
@@ -54,7 +54,7 @@ function performVersionCheck()
 		else
 			print("[EssentialMode] Updater version: UPDATER UNAVAILABLE")
 			print("[EssentialMode] This could be your internet connection or that the update server is not running. This won't impact the server\n\n")
-		
+
 			if(not _FirstCheckPerformed)then
 				ExecuteCommand("sets EssentialModeUUID " .. _UUID)
 				ExecuteCommand("sets EssentialModeVersion " .. _VERSION)
@@ -211,7 +211,7 @@ AddEventHandler('chatMessage', function(source, n, message)
 					TriggerEvent("es:userCommandRan", source, command_args)
 				end
 			end
-			
+
 			TriggerEvent("es:commandRan", source, command_args, Users[source])
 		else
 			TriggerEvent('es:invalidCommandHandler', source, command_args, Users[source])
