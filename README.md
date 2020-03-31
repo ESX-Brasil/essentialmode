@@ -11,11 +11,6 @@ Ele lida com os dados do jogador salvando como seu dinheiro, grupos e funções 
 - código legível limpo
 - Tentativa de OOP para uso fácil
 
-## Instalação
-Por favor, siga este guia: https://docs.essentialmode.com/#installation
+# Discord
 
-## Documentação
-A documentação do EssentialMode pode ser encontrada em: https://docs.essentialmode.com/
-
-# Alugue um servidor com o EssentialMode pré-instalado!
-Go to https://zap-hosting.com/EssentialMode and use code `kanersps-a-2529` for 10% off on all products for life! They will even install EssentialMode for you!
+[![Join ESX Brasil](https://discordapp.com/api/guilds/693468263161659402/embed.png?style=banner2)](https://discord.gg/ZGXTsdN)

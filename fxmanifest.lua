@@ -1,10 +1,12 @@
 --       Licensed under: AGPLv3        --
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
---     Version 3, 19 November 2007     --
+--        Version 3, 31.03.2020        --
 
-resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
+fx_version 'bodacious'
 
-description 'EssentialMode by Kanersps.'
+games { 'gta5' }
+
+description 'EssentialMode by ESXBrasil.'
 
 server_scripts {
 	'server/sqlite/SQLite.net.dll',

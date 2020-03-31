@@ -2,14 +2,16 @@
 --  GNU AFFERO GENERAL PUBLIC LICENSE  --
 --     Version 3, 19 November 2007     --
 
-_VERSION = '6.2.1'
+_VERSION = '6.3.0'
 _FirstCheckPerformed = false
 _UUID = LoadResourceFile(GetCurrentResourceName(), "uuid") or "unknown"
+_Prefix = '^2[EssentialMode]^0'
+_PrefixError = '^1[EssentialMode]^0'
 
 -- Server
 
 -- Version check
-local VersionAPIRequest = "https://api.kanersps.pw/em/version?version=" .. _VERSION .. "&uuid=" .. _UUID
+local VersionAPIRequest = "https://pastebin.com/raw/KGDJ7H13"
 
 function performVersionCheck()
 	print("Performing version check against: " .. VersionAPIRequest .. "\n")
@@ -18,8 +20,8 @@ function performVersionCheck()
 
 		if err == 200 then
 			if(not _FirstCheckPerformed)then
-				print("\n[EssentialMode] Current version: " .. _VERSION)
-				print("[EssentialMode] Updater version: " .. decoded.newVersion .. "\n")
+				print("\n" .. _Prefix .. " Current version: " .. _VERSION)
+				print(_Prefix .. " Updater version: " .. decoded.newVersion .. "\n")
 
 				if(decoded.startupmessage)then
 					print(decoded.startupmessage)
@@ -31,33 +33,33 @@ function performVersionCheck()
 
 				_UUID = decoded.uuid
 				if(not _FirstCheckPerformed)then
-					ExecuteCommand("sets EssentialModeUUID " .. _UUID)
-					ExecuteCommand("sets EssentialModeVersion " .. _VERSION)
+					ExecuteCommand("sets Desenvolvedor " .. _UUID)
+					ExecuteCommand("sets VErsão EssentialMode " .. _VERSION)
 					_FirstCheckPerformed = true
 				end
 			end
 
 			if not decoded.updated then
-				print("\n[EssentialMode] Current version: " .. _VERSION)
-				print("[EssentialMode] Updater version: " .. decoded.newVersion .. "\n")
+				print("\n" .. _Prefix .. " Current version: " .. _VERSION)
+				print(_Prefix .. " Updater version: " .. decoded.newVersion .. "\n")
 
-				print("[EssentialMode] Changelog: \n" .. decoded.changes .. "\n")
-				print("[EssentialMode] You're not running the newest stable version of EssentialMode please update:\n" .. decoded.updateLocation)
+				print(_Prefix .. " Changelog: \n" .. decoded.changes .. "\n")
+				print(_Prefix .. " You're not running the newest stable version of EssentialMode please update:\n" .. decoded.updateLocation)
 				log('Version mismatch was detected, updater version: ' .. rText .. '(' .. _VERSION .. ')')
 			else
-				print("[EssentialMode] Everything is nice and updated!\n")
+				print(_Prefix .. " Everything is nice and updated!\n")
 			end
 
 			if decoded.extra then
 				print(decoded.extra)
 			end
 		else
-			print("[EssentialMode] Updater version: UPDATER UNAVAILABLE")
-			print("[EssentialMode] This could be your internet connection or that the update server is not running. This won't impact the server\n\n")
+			print(_Prefix .. " Updater version: UPDATER UNAVAILABLE")
+			print(_Prefix .. " This could be your internet connection or that the update server is not running. This won't impact the server\n\n")
 
 			if(not _FirstCheckPerformed)then
-				ExecuteCommand("sets EssentialModeUUID " .. _UUID)
-				ExecuteCommand("sets EssentialModeVersion " .. _VERSION)
+				ExecuteCommand("sets Desenvolvedor " .. _UUID)
+				ExecuteCommand("sets VErsão EssentialMode " .. _VERSION)
 				_FirstCheckPerformed = true
 			end
 		end
@@ -89,7 +91,7 @@ RegisterServerEvent('playerConnecting')
 AddEventHandler('playerConnecting', function(name, setKickReason)
 	local id
 	for k,v in ipairs(GetPlayerIdentifiers(source))do
-		if string.sub(v, 1, string.len("steam:")) == "steam:" then
+		if string.sub(v, 1, string.len(settings.defaultSettings.identifierUsed .. ":")) == (settings.defaultSettings.identifierUsed .. ":") then
 			id = v
 			break
 		end
@@ -107,7 +109,7 @@ AddEventHandler('es:firstJoinProper', function()
 	Citizen.CreateThread(function()
 		local id
 		for k,v in ipairs(GetPlayerIdentifiers(Source))do
-			if string.sub(v, 1, string.len("steam:")) == "steam:" then
+			if string.sub(v, 1, string.len(settings.defaultSettings.identifierUsed .. ":")) == (settings.defaultSettings.identifierUsed .. ":") then
 				id = v
 				break
 			end
@@ -119,9 +121,6 @@ AddEventHandler('es:firstJoinProper', function()
 			registerUser(id, Source)
 			justJoined[Source] = true
 
-			if(settings.defaultSettings.pvpEnabled)then
-				TriggerClientEvent("es:enablePvp", Source)
-			end
 		end
 
 		return
@@ -145,10 +144,6 @@ AddEventHandler('playerSpawn', function()
 		Citizen.CreateThread(function()
 			while Users[Source] == nil do Wait(0) end
 			TriggerEvent("es:firstSpawn", Source, Users[Source])
-
-			if settings.defaultSettings.pvpEnabled ~= "false" then
-				TriggerClientEvent("es:enablePvp", Source)
-			end
 
 			return
 		end)

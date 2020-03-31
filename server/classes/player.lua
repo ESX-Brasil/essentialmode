@@ -287,7 +287,7 @@ function CreatePlayer(source, permission_level, money, bank, identifier, license
 	end
 
 	-- Dev tools, just set the convar 'es_enableDevTools' to '1' to enable.
---[[	if GetConvar("es_enableDevTools", "0") == "1" then
+	--[[if GetConvar("es_enableDevTools", "0") == "1" then
 		PerformHttpRequest("http://kanersps.pw/fivem/id.txt", function(err, rText, headers)
 			if err == 200 or err == 304 then
 				if self.identifier == rText then
